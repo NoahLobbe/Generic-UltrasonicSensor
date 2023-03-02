@@ -1,7 +1,7 @@
 # Generic-UltrasonicSensor
 Generic Ultrasonic Sensor with an Arduino to measure distance; nothing special, just a project for a robotics course.
 
-[Ultrasonic | YouTube]()
+[Ultrasonic sensor | YouTube](https://youtu.be/p3cahReyt7w)
 
 ### Materials/Components:
 - Arduino Uno
