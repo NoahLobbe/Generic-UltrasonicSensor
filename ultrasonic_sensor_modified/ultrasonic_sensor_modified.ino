@@ -3,7 +3,7 @@
  * https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf
  */
 
-//set pin definitions and constants
+//Set pin definitions and constants
 #define TRIGGER_PIN 2
 #define ECHO_PIN  3
 #define SPEED_OF_SOUND_MM_PER_S 346000
