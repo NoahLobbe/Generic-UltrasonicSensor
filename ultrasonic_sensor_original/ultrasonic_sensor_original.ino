@@ -3,6 +3,7 @@
  * https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf
  */
 
+//Set pin definitions and constants
 #define TRIGGER_PIN 2
 #define ECHO_PIN  3
 #define SPEED_OF_SOUND_MM_PER_S 340000
@@ -13,15 +14,15 @@ void setup() {
   pinMode(TRIGGER_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
 
-  digitalWrite(TRIGGER_PIN, LOW); //
+  digitalWrite(TRIGGER_PIN, LOW); //don’t start getting distance yet to ensure accurate results in main loop
 
   Serial.begin(9600); //connect serial communication with computer
 }
 
 void loop() {
-
+  //send a 10uS trigger pulse
   digitalWrite(TRIGGER_PIN, HIGH);
-  delayMicroseconds(10); //send a 10uS trigger pulse
+  delayMicroseconds(10); 
   digitalWrite(TRIGGER_PIN, LOW);
   
   /* Normally speed = distance/time -> distance = speed * time
