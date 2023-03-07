@@ -3,10 +3,13 @@
  * https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf
  */
 
+//set pin definitions and constants
 #define TRIGGER_PIN 2
 #define ECHO_PIN  3
 #define SPEED_OF_SOUND_MM_PER_S 346000
 #define CHECK_TIME_INTERVAL_MS 60 //to prevent sensor's sound waves from interfering with itself
+
+//setup variables
 unsigned long previousTime = millis(); 
 
 void setup() {
@@ -15,7 +18,7 @@ void setup() {
   pinMode(TRIGGER_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
 
-  digitalWrite(TRIGGER_PIN, LOW); //
+  digitalWrite(TRIGGER_PIN, LOW); //don’t start getting distance yet to ensure accurate results in main loop
 
   Serial.begin(9600); //connect serial communication with computer
 }
@@ -25,8 +28,9 @@ void loop() {
   //Refresher: https://roboticsbackend.com/arduino-millis-vs-micros/
   unsigned long currentTime = millis(); 
   if ((currentTime - previousTime) >= CHECK_TIME_INTERVAL_MS) {
+    //send a 10uS trigger pulse
     digitalWrite(TRIGGER_PIN, HIGH);
-    delayMicroseconds(10); //send a 10uS trigger pulse
+    delayMicroseconds(10); 
     digitalWrite(TRIGGER_PIN, LOW);
   
     /* Normally speed = distance/time -> distance = speed * time
